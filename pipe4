@@ -12,6 +12,7 @@ stages {
         steps {
             script {
                 def name = "${params.NAME}"
+                echo "Mr. $name"
         }
     }
     }
@@ -19,6 +20,7 @@ stages {
         steps {
             script {
                 def desc = "${params.DESC}"
+                echo "$desc"
         }
         }
     }
@@ -26,6 +28,7 @@ stages {
             steps {
                 script {
                 def skipTest = "${params.SKIP_TEST}"
+                echo "$skipTest"
                 }
         }
   }    
@@ -34,13 +37,15 @@ stages {
         steps {
             script {
                 def desc = "${params.BRANCH}"
+                echo "$desc"
         }
         }
     }
     stage('Passwd') {
         steps {
             script {
-                def desc = "${params.SONAR_SERVER_PWD}"
+                def passwd = "${params.SONAR_SERVER_PWD}"
+                echo "$passwd"
         }
         }
     }
