@@ -1,11 +1,11 @@
 pipeline {
 agent any
-stages{         # List of stages for jobs, and their order of execution
+stages{         
   build
   test
   deploy
 
-check-de-la-coque{      # This job runs in the build stage, which runs first.
+check-de-la-coque{      
   stage{ build
   script{
     echo "Checking de la coque"
@@ -14,8 +14,8 @@ check-de-la-coque{      # This job runs in the build stage, which runs first.
 }
 }
 }
-verification-electronique{  # This job runs in the test stage.
-  stage{ test    # It only starts when the job in the build stage completes successfully.
+verification-electronique{  
+  stage{ test    
   script{
     echo "Verification des systemes l'electroniques"
     sleep 10
@@ -23,8 +23,8 @@ verification-electronique{  # This job runs in the test stage.
 }
 }
 }
-verification-carburant{   # This job also runs in the test stage.
-  stage{ build    # It can run at the same time as unit-test-job (in parallel).
+verification-carburant{   
+  stage{ build   
   script{
     echo "Verification du niveau de carburant"
     sleep 10
@@ -32,8 +32,8 @@ verification-carburant{   # This job also runs in the test stage.
 }
 }
 }
-verification-propulseur{      # This job runs in the deploy stage.
-  stage{ build  # It only runs when *both* jobs in the test stage complete successfully.
+verification-propulseur{      
+  stage{ build  
   environment{ production
   script{
     echo "Verification de l'integrite des propulseurs."
@@ -43,8 +43,8 @@ verification-propulseur{      # This job runs in the deploy stage.
 }
 }
 }
-verification-equipement-nav{  # This job also runs in the test stage.
-  stage{ test    # It can run at the same time as unit-test-job (in parallel).
+verification-equipement-nav{ 
+  stage{ test    
   script{
     echo "Verification des équipement de navigation"
     sleep 10
@@ -52,8 +52,8 @@ verification-equipement-nav{  # This job also runs in the test stage.
 }
 }
 }
-verification-equipement-sec{  # This job also runs in the test stage.
-  stage{ deploy   # It can run at the same time as unit-test-job (in parallel).
+verification-equipement-sec{ 
+  stage{ deploy   
   script{
     echo "Verification de l'integrite des equipements de secours"
     sleep 10
@@ -61,8 +61,8 @@ verification-equipement-sec{  # This job also runs in the test stage.
 }
 }
 }
-verification-communication{   # This job also runs in the test stage.
-  stage{ deploy    # It can run at the same time as unit-test-job (in parallel).
+verification-communication{   
+  stage{ deploy    
   script{
     echo "Verification des equipements de communication"
     sleep 10
@@ -70,8 +70,8 @@ verification-communication{   # This job also runs in the test stage.
 }
 }
 }
-verification-vitesse{   # This job also runs in the test stage.
-  stage{ test    # It can run at the same time as unit-test-job (in parallel).
+verification-vitesse{   
+  stage{ test    
   script{
     echo "Verification de la vitesse"
     sleep 15
@@ -79,8 +79,8 @@ verification-vitesse{   # This job also runs in the test stage.
 }
 }
 }
-verification-trajectoire{  # This job also runs in the test stage.
-  stage{ test    # It can run at the same time as unit-test-job (in parallel).
+verification-trajectoire{  
+  stage{ test    
   script{
     echo "Verification de la trajectoire"
     sleep 10
@@ -88,8 +88,8 @@ verification-trajectoire{  # This job also runs in the test stage.
 }
 }
 }
-verification-altitude{   # This job also runs in the test stage.
-  stage{ test    # It can run at the same time as unit-test-job (in parallel).
+verification-altitude{   
+  stage{ test    
   script{
     echo "Verification de l'altitude"
     sleep 10
@@ -97,8 +97,8 @@ verification-altitude{   # This job also runs in the test stage.
 }
 }
 }
-verification-train{   # This job also runs in the test stage.
-  stage{ deploy    # It can run at the same time as unit-test-job (in parallel).
+verification-train{   
+  stage{ deploy   
   script{
     echo "Verification du déploiement du train d'atterissage"
     sleep 10
